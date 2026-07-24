@@ -1,0 +1,6 @@
+.env
+*.env
+acme.json
+**/data/
+**/backups/
+*.key
