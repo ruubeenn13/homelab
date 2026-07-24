@@ -17,4 +17,4 @@ Infraestructura self-hosted en un portátil Asus (Ubuntu Server 24.04 + Docker C
 - README raíz actualizado en cada cambio relevante.
 - Decisiones de arquitectura en `docs/decisions/`, una nota corta por decisión.
 - Secretos jamás en Git: respetar `.gitignore` (.env, acme.json, data/, backups/, *.key).
-- Repo privado hasta auditar el historial; después, público como portfolio.
+- Repo público (portfolio): secretos jamás en Git, `.env.example` por stack, push protection activa en GitHub.
