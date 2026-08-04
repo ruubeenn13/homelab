@@ -5,7 +5,7 @@ Infraestructura self-hosted en un portátil Asus (Ubuntu Server 24.04 + Docker C
 
 ## Decisiones cerradas
 - Exposición: cero puertos abiertos. Público → Cloudflare Tunnel · privado → Tailscale · LAN → AdGuard Home.
-- Proxy: Traefik v3, wildcard TLS por DNS-01 (Cloudflare). Dominio: rubenlab.dev.
+- Proxy: Traefik v3, wildcard TLS por DNS-01 (Cloudflare). Dominio: rubenlav.dev (con v).
 - CI/CD: runner self-hosted de GitHub Actions. Sin Jenkins.
 - Actualizaciones: versiones fijadas + Diun (solo notifica). Sin Watchtower. Nunca `latest` en BDs.
 - Backups: dump de BDs + restic → HDD local (/mnt/datos/backups) + Backblaze B2. Restore de prueba mensual.
