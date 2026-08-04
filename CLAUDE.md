@@ -8,9 +8,9 @@ Infraestructura self-hosted en un portátil Asus (Ubuntu Server 24.04 + Docker C
 - Proxy: Traefik v3, wildcard TLS por DNS-01 (Cloudflare). Dominio: rubenlab.dev.
 - CI/CD: runner self-hosted de GitHub Actions. Sin Jenkins.
 - Actualizaciones: versiones fijadas + Diun (solo notifica). Sin Watchtower. Nunca `latest` en BDs.
-- Backups: dump de BDs + restic → SSD SATA + Backblaze B2. Restore de prueba mensual.
+- Backups: dump de BDs + restic → HDD local (/mnt/datos/backups) + Backblaze B2. Restore de prueba mensual.
 - BDs: una por stack. MariaDB 11 para GymProFit/bot; PostgreSQL solo si un proyecto lo pide.
-- Discos: NVMe 1TB = sistema, Docker y datos calientes · SATA 500GB = backups locales y bulk.
+- Discos: NVMe 1TB (WD SN770) = sistema, Docker y datos calientes · HDD 1TB (Toshiba, en /mnt/datos) = backups locales y bulk.
 
 ## Normas del repo
 - Un directorio por stack en `stacks/`: `compose.yml` + `.env` (fuera de Git) + README corto.
