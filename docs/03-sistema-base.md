@@ -67,3 +67,25 @@ sudo usermod -aG docker ruben   # requiere relogin
 - Trabajar SIEMPRE como usuario normal; `sudo` puntual por comando. Nada de `sudo su`.
 - Git jamás con sudo (los archivos quedarían en propiedad de root).
 - Apagado ordenado: `sudo poweroff`. Nunca el botón, salvo cuelgue total.
+
+## Batalla: batería crítica sin tapa cerrada
+
+El mask de sleep de este documento bloquea la tapa, pero UPower dispara su
+propia acción ante **batería crítica** por una vía distinta — bypassea el
+mask y puede colar un `hybrid-sleep` (verificado en real, 05/08/2026).
+Bloquear sleep sin más tampoco vale: si a UPower no le queda ninguna vía,
+la batería se agota igual y el equipo muere en seco (riesgo para los
+volúmenes de Docker). La solución es que ante batería crítica **apague
+limpio**, no que intente dormir.
+
+`/etc/UPower/UPower.conf`: `CriticalPowerAction=PowerOff`,
+`PercentageAction=5`, `PercentageCritical=8`, `PercentageLow=20`.
+
+**Aviso previo** (antes de llegar a ese punto): `/usr/local/bin/battery-watch.sh`
++ `battery-watch.timer` (cada 5 min) — si detecta `discharging` y ≤25%,
+push a ntfy vía la URL pública (el host sí resuelve `*.rubenlav.dev`, a
+diferencia de los contenedores — doc 08). Se resetea solo al reconectar
+el cargador.
+
+Host en `Europe/Madrid` (antes UTC — los contenedores ya llevaban
+`TZ=Europe/Madrid` propio, esto solo afectaba a logs del sistema).
