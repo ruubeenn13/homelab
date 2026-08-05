@@ -25,3 +25,21 @@ NVMe); **Grafana** las visualiza.
 
 cAdvisor para métricas por contenedor, panel/es embebidos en Homarr, y
 alertas de Grafana → ntfy (umbrales de CPU/RAM/disco sostenidos).
+
+## Paneles embebidos en Homarr (fase 1.5)
+
+Grafana con `GF_SECURITY_ALLOW_EMBEDDING=true` + acceso **anónimo de solo
+lectura** (`GF_AUTH_ANONYMOUS_ENABLED=true`, rol Viewer) — necesario porque
+el iframe de Homarr no puede autenticarse. Riesgo asumido y aceptado:
+cualquier dispositivo del tailnet ve las gráficas sin login (tailnet
+unipersonal).
+
+Para iframes vale solo la URL de panel suelto
+(`/d-solo/<uid>/<slug>?orgId=1&panelId=NN&from=now-6h&to=now&refresh=1m&theme=dark`);
+la URL normal del dashboard carga la interfaz entera. En Node Exporter
+Full: CPU Basic = panel 77, Memory Basic = 78 (el ID sale abriendo el
+panel en View y mirando `viewPanel=` en la URL).
+
+Tarjetas de app en Homarr: el ping de estado sale del contenedor → usar
+"URL diferente para ping" con la interna (`http://grafana:3000`), no el
+dominio público (doc 08, una vez más).
