@@ -1,0 +1,28 @@
+services:
+  backrest:
+    image: garethgeorge/backrest:v1.14.1
+    container_name: backrest
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+      - ./config:/config
+      - ./cache:/cache
+      - /opt/homelab:/userdata/homelab:ro
+      - /mnt/datos/backups:/repos/local
+      - ./restore-test:/restore-test
+    environment:
+      - BACKREST_DATA=/data
+      - BACKREST_CONFIG=/config/config.json
+      - XDG_CACHE_HOME=/cache
+      - TZ=Europe/Madrid
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.backrest.rule=Host(`backup.rubenlav.dev`)
+      - traefik.http.routers.backrest.entrypoints=websecure
+      - traefik.http.services.backrest.loadbalancer.server.port=9898
+
+networks:
+  proxy:
+    external: true

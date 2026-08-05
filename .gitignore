@@ -5,3 +5,6 @@ acme.json
 **/backups/
 *.key
 stacks/backrest/restore-test/
+stacks/backrest/data/
+stacks/backrest/config/
+stacks/backrest/cache/
