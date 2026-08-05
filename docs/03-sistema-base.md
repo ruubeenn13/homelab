@@ -89,3 +89,9 @@ el cargador.
 
 Host en `Europe/Madrid` (antes UTC — los contenedores ya llevaban
 `TZ=Europe/Madrid` propio, esto solo afectaba a logs del sistema).
+
+## Aviso de disco lleno
+
+Mismo patrón que el de batería — `/usr/local/bin/disk-watch.sh` +
+`disk-watch.timer` (cada 15 min), vigila `/` y `/mnt/datos`, push a ntfy
+al cruzar el 85% de uso, se resetea solo si baja de nuevo.
