@@ -1,0 +1,23 @@
+services:
+  ntfy:
+    image: binwiederhier/ntfy:v2.26.0
+    container_name: ntfy
+    restart: unless-stopped
+    command: serve
+    environment:
+      - NTFY_BASE_URL=https://ntfy.rubenlav.dev
+      - NTFY_CACHE_FILE=/var/cache/ntfy/cache.db
+      - NTFY_ENABLE_LOGIN=false
+    volumes:
+      - ./data/cache:/var/cache/ntfy
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ntfy.rule=Host(`ntfy.rubenlav.dev`)
+      - traefik.http.routers.ntfy.entrypoints=websecure
+      - traefik.http.services.ntfy.loadbalancer.server.port=80
+
+networks:
+  proxy:
+    external: true

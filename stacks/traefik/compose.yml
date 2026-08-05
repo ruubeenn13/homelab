@@ -24,6 +24,7 @@ services:
     command:
       - --log.level=INFO
       - --api.dashboard=true
+      - --api.insecure=true
       - --providers.docker=true
       - --providers.docker.endpoint=tcp://socket-proxy:2375
       - --providers.docker.exposedbydefault=false
