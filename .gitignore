@@ -4,3 +4,4 @@ acme.json
 **/data/
 **/backups/
 *.key
+stacks/backrest/restore-test/
