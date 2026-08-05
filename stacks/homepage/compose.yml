@@ -1,0 +1,26 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:v1.13.2
+    container_name: homepage
+    restart: unless-stopped
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=homepage.rubenlav.dev
+      - TZ=Europe/Madrid
+    volumes:
+      - ./config:/app/config
+      - /mnt/datos:/mnt/datos:ro
+    networks:
+      - proxy
+      - socket
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.homepage.rule=Host(`homepage.rubenlav.dev`)
+      - traefik.http.routers.homepage.entrypoints=websecure
+      - traefik.http.services.homepage.loadbalancer.server.port=3000
+
+networks:
+  proxy:
+    external: true
+  socket:
+    external: true
+    name: traefik_socket

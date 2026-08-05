@@ -8,3 +8,4 @@ stacks/backrest/restore-test/
 stacks/backrest/data/
 stacks/backrest/config/
 stacks/backrest/cache/
+**/appdata/

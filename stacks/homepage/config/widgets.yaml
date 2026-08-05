@@ -1,0 +1,26 @@
+- resources:
+    label: sistema
+    cpu: true
+    memory: true
+    uptime: true
+- resources:
+    label: NVMe · sistema
+    disk: /
+- resources:
+    label: HDD · backups
+    disk: /mnt/datos
+- search:
+    provider: duckduckgo
+    target: _blank
+- openmeteo:
+    label: Elche
+    latitude: 38.27
+    longitude: -0.70
+    timezone: Europe/Madrid
+    units: metric
+    cache: 5
+- datetime:
+    text_size: xl
+    format:
+      dateStyle: long
+      timeStyle: short

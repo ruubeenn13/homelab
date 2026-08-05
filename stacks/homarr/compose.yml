@@ -1,0 +1,27 @@
+services:
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:v1.73.0
+    container_name: homarr
+    restart: unless-stopped
+    environment:
+      - SECRET_ENCRYPTION_KEY=${SECRET_ENCRYPTION_KEY}
+      - DOCKER_HOSTNAMES=socket-proxy
+      - DOCKER_PORTS=2375
+      - TZ=Europe/Madrid
+    volumes:
+      - ./appdata:/appdata
+    networks:
+      - proxy
+      - socket
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.homarr.rule=Host(`dash.rubenlav.dev`)
+      - traefik.http.routers.homarr.entrypoints=websecure
+      - traefik.http.services.homarr.loadbalancer.server.port=7575
+
+networks:
+  proxy:
+    external: true
+  socket:
+    external: true
+    name: traefik_socket

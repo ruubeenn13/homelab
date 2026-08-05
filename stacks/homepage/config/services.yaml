@@ -1,0 +1,44 @@
+- Infraestructura:
+    - Traefik:
+        href: https://traefik.rubenlav.dev
+        icon: traefik.png
+        description: Reverse proxy + TLS
+        server: homelab
+        container: traefik
+        widget:
+          type: traefik
+          url: http://traefik:8080
+    - AdGuard Home:
+        href: https://adguard.rubenlav.dev
+        icon: adguard-home.png
+        description: DNS + bloqueo
+        server: homelab
+        container: adguard
+
+- Monitorización:
+    - Uptime Kuma:
+        href: https://uptime.rubenlav.dev
+        icon: uptime-kuma.png
+        description: Estado de servicios
+        server: homelab
+        container: uptime-kuma
+    - Dozzle:
+        href: https://dozzle.rubenlav.dev
+        icon: dozzle.png
+        description: Logs en vivo
+        server: homelab
+        container: dozzle
+    - ntfy:
+        href: https://ntfy.rubenlav.dev
+        icon: ntfy.png
+        description: Notificaciones push
+        server: homelab
+        container: ntfy
+
+- Backups:
+    - Backrest:
+        href: https://backup.rubenlav.dev
+        icon: backrest.png
+        description: restic · local + B2
+        server: homelab
+        container: backrest

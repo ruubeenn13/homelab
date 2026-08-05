@@ -1,0 +1,18 @@
+title: Homelab · rubenlav.dev
+background:
+  image: https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2560
+  blur: sm
+  brightness: 50
+  opacity: 50
+theme: dark
+color: slate
+headerStyle: boxed
+cardBlur: sm
+iconStyle: theme
+layout:
+  - Infraestructura:
+  - Monitorización:
+  - Backups:
+  - Enlaces:
+      style: row
+      columns: 4

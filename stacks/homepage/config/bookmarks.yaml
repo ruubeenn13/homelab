@@ -1,0 +1,13 @@
+- Enlaces:
+    - Repo homelab:
+        - icon: mdi-github
+          href: https://github.com/ruubeenn13/homelab
+    - Cloudflare:
+        - icon: cloudflare.png
+          href: https://dash.cloudflare.com
+    - Backblaze:
+        - icon: backblaze.png
+          href: https://secure.backblaze.com
+    - Tailscale:
+        - icon: tailscale.png
+          href: https://login.tailscale.com/admin
