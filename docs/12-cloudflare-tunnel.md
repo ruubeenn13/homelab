@@ -43,3 +43,12 @@ llegan tarde. Topics secretos, nunca en Git ni publicados.
 
 Webhooks entrantes: bot de Telegram con trigger nativo y webhooks push de
 GitHub — siguiente vez que toquemos n8n.
+
+## Segunda ruta: webhooks de n8n (exposición por path)
+
+Ruta `n8n.rubenlav.dev` con **Ruta `^/webhook`** → `https://traefik:443`
+(Origin Server Name `n8n.rubenlav.dev`): solo los paths de webhook son
+públicos; la interfaz da 404 desde Internet y sigue siendo solo-Tailscale.
+Primer consumidor: webhook de GitHub (repo homelab) → push por ntfy al
+abrirse issues/PRs o recibir stars. Verificado el circuito completo:
+GitHub → Cloudflare → túnel → Traefik → n8n → ntfy → móvil.
