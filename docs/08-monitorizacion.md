@@ -57,3 +57,11 @@ monitores nuevos. Prioridad máxima en eventos de caída, normal en recuperació
 - Test de notificación desde Uptime Kuma → llega al móvil en 1-2 s.
 - `docker stop <contenedor>` de prueba → aviso de caída en <60 s (intervalo de
   chequeo) → `docker start` → aviso de recuperación.
+
+## Cobertura completa (06/08/2026)
+
+Uptime Kuma pasa de 4 a **10 monitores** (se suman n8n, Grafana,
+Prometheus, Homarr, ntfy y Backrest, por URL interna) con **2 reintentos**
+en todos: un microcorte no alerta; ~2 min caído, sí. Todos añadidos a la
+status page `homelab` — de la que leen el parte diario de n8n y Homarr,
+que ahora reflejan 10/10 real.
