@@ -43,3 +43,18 @@ panel en View y mirando `viewPanel=` en la URL).
 Tarjetas de app en Homarr: el ping de estado sale del contenedor → usar
 "URL diferente para ping" con la interna (`http://grafana:3000`), no el
 dominio público (doc 08, una vez más).
+
+## Fase 2 — cAdvisor: métricas por contenedor
+
+cAdvisor v0.55.1 con monturas de solo lectura y `/dev/kmsg` (detección de
+OOM kills) — sin `privileged`, mínimo privilegio como el socket-proxy. Sin
+Traefik: solo lo lee Prometheus (job `cadvisor:8080`). Dashboard comunidad
+ID 14282 ("Cadvisor exporter"). Referencia inicial: stack completo ~1,1 GiB
+de RAM; n8n (~420 MiB) y Homarr (~350 MiB) a la cabeza.
+
+Dos batallas: (1) **release de GitHub ≠ imagen publicada** — la API de
+GitHub daba v0.60.5 pero esa imagen no existe en gcr.io; la fuente de
+verdad es el registry: `curl .../tags/list | sort -V | tail -1`.
+(2) **Prometheus solo lee su config al arrancar** — tras tocar
+`prometheus.yml`, `docker compose restart prometheus` obligatorio (el
+target nuevo no aparecía y el delator fue el "Up 12 hours").

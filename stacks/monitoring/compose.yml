@@ -53,6 +53,21 @@ services:
       - traefik.http.routers.grafana.entrypoints=websecure
       - traefik.http.services.grafana.loadbalancer.server.port=3000
 
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.55.1
+    container_name: cadvisor
+    restart: unless-stopped
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    networks:
+      - proxy
+
 networks:
   proxy:
     external: true
