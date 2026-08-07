@@ -1,0 +1,15 @@
+services:
+  gymprofit-bot:
+    image: gymprofit-bot:latest
+    container_name: gymprofit-bot
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - backend
+      - proxy
+
+networks:
+  backend:
+    external: true
+  proxy:
+    external: true
