@@ -10,3 +10,6 @@ stacks/backrest/config/
 stacks/backrest/cache/
 **/appdata/
 dumps/
+
+# crafty-controller: solo el compose.yml se versiona
+stacks/crafty-controller/docker/
