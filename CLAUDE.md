@@ -9,7 +9,7 @@ Infraestructura self-hosted en un portátil Asus (Ubuntu Server 24.04 + Docker C
 - CI/CD: runner self-hosted de GitHub Actions. Sin Jenkins.
 - Actualizaciones: versiones fijadas + Diun (solo notifica). Sin Watchtower. Nunca `latest` en BDs.
 - Backups: dump de BDs + restic → HDD local (/mnt/datos/backups) + Backblaze B2. Restore de prueba mensual.
-- BDs: una por stack. MariaDB 11 para GymProFit/bot; PostgreSQL solo si un proyecto lo pide.
+- BDs: una por stack. MySQL 8.4 LTS para GymProFit/bot (Flyway + mysql-connector-j piden MySQL, no MariaDB — ver doc 15); PostgreSQL solo si un proyecto lo pide.
 - Discos: NVMe 1TB (WD SN770) = sistema, Docker y datos calientes · HDD 1TB (Toshiba, en /mnt/datos) = backups locales y bulk.
 
 ## Normas del repo
