@@ -45,7 +45,7 @@ Las decisiones de arquitectura viven en [`docs/decisions/`](docs/decisions/) y e
 | [cloudflared](stacks/cloudflared/) | ✅ en marcha | Túnel para exposición pública selectiva |
 | [mysql](stacks/mysql/) | ✅ en marcha | Base de datos del bot de Discord |
 | [gymprofit-bot](stacks/gymprofit-bot/) | ✅ en marcha | Bot de Discord de GymProFit, con CI/CD |
-| crafty-controller | ✅ en marcha | Servidor de Minecraft — pendiente de subir el stack a este repo y documentar (doc 19) |
+| [crafty-controller](stacks/crafty-controller/) | ✅ en marcha | Servidor de Minecraft, ver [doc 19](docs/19-minecraft.md) |
 
 ## Arquitectura (resumen)
 
@@ -57,4 +57,4 @@ Las decisiones de arquitectura viven en [`docs/decisions/`](docs/decisions/) y e
 
 ## Hoja de ruta
 
-GymProFit staging → documentar Crafty/Minecraft (doc 19) → subir stack de Crafty a Git → Immich.
+GymProFit staging → Immich.
